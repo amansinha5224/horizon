@@ -36,6 +36,21 @@
             </div>
         </div>
     </nav>
+
+    {% for message in messages %}
+    <div id="message" class="alert alert-{{message.tags}} alert-dismissible fade show mb-0" role="alert">
+        <strong>Message: </strong> {{message}}
+        <button id="msg-btn-1" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
     {% block body %}{% endblock body %}
 </body>
+<script>
+    const messageButton = document.querySelector('#msg-btn-1');
+    const message = document.querySelector("#message")
+    messageButton.addEventListener("click", (e) => {
+        message.remove()
+    })
+</script>
 </html>
