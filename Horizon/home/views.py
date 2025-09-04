@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .models import Contact
+from blog.models import Post
 from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, 'home/home.html')
+    latestPosts = Post.objects.all().order_by('-timestamp')[:4]
+    return render(request, 'home/home.html', {'posts' : latestPosts})
 
 def about(request):
     return render(request, 'home/about.html')

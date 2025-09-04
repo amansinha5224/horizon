@@ -16,23 +16,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                <a class="nav-link {% block homeactive %}{% endblock homeactive %}" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
+                <a class="nav-link {% block aboutactive %}{% endblock aboutactive %}" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{% url 'blogHome' %}">Blog</a>
+                <a class="nav-link {% block blogactive %}{% endblock blogactive %}" href="{% url 'blogHome' %}">Blog</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                <a class="nav-link {% block contactactive %}{% endblock contactactive %}" href="{% url 'contact' %}">Contact</a>
                 </li>
                 
             </ul>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-outline-success rounded-pill" type="submit">Search</button>
             </form>
+            <a href="/admin" role="button" target="_blank" class="btn btn-outline-info m-2 my-sm-0 rounded-pill">Admin</a>
             </div>
         </div>
     </nav>
