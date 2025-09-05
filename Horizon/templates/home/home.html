@@ -29,7 +29,7 @@
             >Article by {{post.author}}</strong
           >
           <h3 class="mb-0">
-            <a class="text-dark" href="#">{{post.title}}</a>
+            <a class="text-dark" href="/blog/{{post.slug}}">{{post.title}}</a>
           </h3>
           <div class="mb-1 text-muted">{{post.timestamp.date}}</div>
           <p class="card-text mb-auto">{{post.content | truncatechars:50}}</p>
