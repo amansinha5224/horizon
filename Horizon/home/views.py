@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Contact
 from blog.models import Post
 from django.contrib import messages
@@ -32,3 +32,25 @@ def contact(request):
             contact.save()
         
     return render(request, 'home/contact.html')
+
+def search(request):
+    query = request.GET.get("query", "").strip()
+
+    if(not query):
+        return redirect('home')
+
+    if(len(query) > 70):
+        allPost = Post.objects.none()
+    else:
+        allPostTitle = Post.objects.filter(title__icontains = query)
+        allPostContent = Post.objects.filter(content__icontains = query)
+        allPostAuthor = Post.objects.filter(author__icontains = query)
+
+        allPost = allPostTitle.union(allPostContent, allPostAuthor)
+
+    params = {'allPost' : allPost, 'query' : query}
+
+    if(len(allPost) == 0):
+        messages.warning(request, "No search result found please refine your query")
+
+    return render(request, 'home/search.html', params)
