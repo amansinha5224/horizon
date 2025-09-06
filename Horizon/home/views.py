@@ -77,6 +77,11 @@ def handleSignup(request):
         if not username.isalnum():
             messages.error(request, 'Username should not contain special charaters')
             return redirect('home')
+        
+        if len(password) < 8:
+            messages.error(request, 'Password is too short')
+            return redirect('home')
+        
         if password != confirmPassword:
             messages.error(request, 'Password do not matched')
             return redirect('home')
