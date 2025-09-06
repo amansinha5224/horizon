@@ -42,6 +42,7 @@
                 Welcome, {{ request.user.first_name }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
+                <li class="dropdown-item">{{ request.user }}</li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             </ul>
         </div>

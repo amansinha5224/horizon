@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = 'Horizon Admin'
+admin.site.site_title = 'Horizon Admin Panel'
+admin.site.index_title = 'Welcome to Horizon Admin Panel'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),

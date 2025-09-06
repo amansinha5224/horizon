@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
-# Create your views here.
+# HTML Pages
 def home(request):
     latestPosts = Post.objects.all().order_by('-timestamp')[:4]
     return render(request, 'home/home.html', {'posts' : latestPosts})
@@ -57,6 +57,7 @@ def search(request):
 
     return render(request, 'home/search.html', params)
 
+# Authentication APIs
 def handleSignup(request):
     if request.method == 'POST':
         # Get Post Parameters

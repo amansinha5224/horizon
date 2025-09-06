@@ -19,7 +19,9 @@
           </h3>
           <div class="mb-1 text-muted">{{post.timestamp.date}}</div>
           <p class="card-text mb-auto">
-            {{post.content | truncatechars:200}}
+            <div class="preview">
+              {{post.content|truncatechars:200|safe}}
+            </div>
           </p>
           <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary"
             >Continue reading</a
@@ -37,4 +39,10 @@
     </div>
     {% endfor %} 
   </div>
+  <script>
+    let content = document.getElementsByClassName('preview')
+    Array.from(content).forEach((element)=>{
+      element.innerHTML = element.innerText
+    })
+  </script>
 {% endblock body %}
