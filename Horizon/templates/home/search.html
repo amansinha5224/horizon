@@ -34,11 +34,13 @@
           <div class="card-body d-flex flex-column align-items-start mx-4">
             <strong class="d-inline-block mb-2 text-primary">Article by {{post.author}}</strong>
             <h3 class="mb-0">
-              <a class="text-dark" href="#">{{post.title}}</a>
+              <a class="text-dark" href="#">{{post.title|truncatechars:60}}</a>
             </h3>
             <div class="mb-1 text-muted">{{post.timestamp.date}}</div>
             <p class="card-text mb-auto">
-              {{post.content | truncatechars:200}}
+              <div class="preview">
+                {{post.content|truncatechars:200|safe}}
+              </div>
             </p>
             <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary"
               >Continue reading</a
@@ -57,4 +59,10 @@
       {% endfor %} 
     </div>
   {% endif %}
+<script>
+  let content = document.getElementsByClassName('preview')
+  Array.from(content).forEach((element)=>{
+    element.innerHTML = element.innerText
+  })
+</script>
 {% endblock body %}

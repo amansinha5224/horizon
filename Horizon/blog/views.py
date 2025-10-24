@@ -26,35 +26,34 @@ def blogPost(request, slug):
         
     return render(request, 'blog/blogPost.html', {'post' : post, 'comments' : comments, 'user' : user, 'replyDict' : replyDict})
 
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib import messages
+
 def postComment(request):
     if request.method == 'POST':
-        comment = request.POST.get('comment')
+        comment_text = request.POST.get('comment')
         postID = request.POST.get('postSno')
         commentID = request.POST.get('commentSno')
-        post = Post.objects.get(sno = postID)
-        parent = BlogComment.objects.get(sno = commentID)
 
-        if commentID == "":
+        post = get_object_or_404(Post, sno=postID)
+
+        if commentID:
+            parent_comment = get_object_or_404(BlogComment, sno=commentID)
             comment = BlogComment(
-                comment = comment,
-                user = request.user,
-                post = post,
+                comment=comment_text,
+                user=request.user,
+                post=post,
+                parent=parent_comment
             )
-
             comment.save()
-
-            messages.success(request, 'Comment posted successfully!')
-        
+            messages.success(request, 'Reply posted successfully!')
         else:
             comment = BlogComment(
-                comment = comment,
-                user = request.user,
-                post = post,
-                parent = parent,
+                comment=comment_text,
+                user=request.user,
+                post=post
             )
-
             comment.save()
+            messages.success(request, 'Comment posted successfully!')
 
-            messages.success(request, 'Reply posted successfully!')
-            
     return redirect(f"/blog/{post.slug}")
