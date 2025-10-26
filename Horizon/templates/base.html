@@ -31,8 +31,14 @@
                 
             </ul>
             <form class="d-flex" role="search" action="{% url 'search' %}" method = 'GET'>
-                <input class="form-control me-2 rounded-pill" name="query" id="search" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success rounded-pill" type="submit">Search</button>
+                <div class="d-flex bg-white rounded-pill">
+                    <input class="form-control me-2 rounded-pill border-0 px-4" name="query" id="search" type="search" placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-white rounded-circle" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </div>
             </form>
             </div>
         </div>
@@ -142,42 +148,39 @@
     {% block body %}{% endblock body %}
 
     <footer class="footer bg-dark text-white">
-        <div class="container"> 
+        <div class="px-5"> 
             <div class="py-5"> 
                 <div class="row"> 
-                    <div class="col-6 col-md-2 mb-3"> 
-                        <h5>Section</h5> 
-                        <ul class="nav flex-column"> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Home</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Features</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Pricing</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">FAQs</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">About</a></li> 
-                        </ul> 
-                    </div> 
-                    <div class="col-6 col-md-2 mb-3"> 
-                        <h5>Section</h5> 
-                        <ul class="nav flex-column"> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Home</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Features</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Pricing</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">FAQs</a></li> 
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">About</a></li> 
-                        </ul> 
-                    </div> 
-                    <div class="col-6 col-md-2 mb-3"> 
-                        <h5>Section</h5> 
-                            <ul class="nav flex-column"> 
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Home</a></li> 
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Features</a></li> 
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Pricing</a></li> 
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">FAQs</a></li> 
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">About</a></li> 
-                            </ul> 
+                    <div class="col-3"> 
+                        <p class="h3" href="{% url 'home' %}"><b><i>Horizon</i></b></p>
+                        <p>
+                            Our mission is to equip readers with informative blogs that help to elevate their knowledge
+                        </p>
+                    </div>
+                    <div class="col-3 offset-md-1"> 
+                        <div class="row">
+                            <div class="col">
+                                <h6>About Us</h6> 
+                                <ul class="nav flex-column"> 
+                                    <li class="nav-item mb-2"><a href="/about" class="nav-link p-0 text-light">About</a></li> 
+                                    <li class="nav-item mb-2"><a href="/blog" class="nav-link p-0 text-light">Blog</a></li> 
+                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Features</a></li> 
+                                </ul> 
+                            </div>
+                            <div class="col">
+                                <h6>Support</h6> 
+                                <ul class="nav flex-column"> 
+                                    <li class="nav-item mb-2"><a href="/contact" class="nav-link p-0 text-light">Contact Us</a></li> 
+                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Help</a></li> 
+                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">FAQs</a></li> 
+                                </ul> 
+                            </div>
+                        </div>
+                        
                         </div> 
-                        <div class="col-md-5 offset-md-1 mb-3"> 
+                        <div class="col-md-5 mb-3"> 
                             <form> 
-                                <h5>Subscribe to our Platform</h5> 
+                                <h6>Subscribe to our Platform</h6> 
                                 <p>Monthly digest of what's new and exciting from us.</p> 
                                 <div class="d-flex flex-column flex-sm-row w-100 gap-2"> 
                                     <label for="newsletter1" class="visually-hidden">Email address</label> <input id="newsletter1" type="email" class="form-control" placeholder="Email address"> 
@@ -186,8 +189,8 @@
                             </form> 
                         </div> 
                     </div> 
-                    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top"> 
-                        <p><a class="navbar-brand" href="{% url 'home' %}"><b><i>Horizon</i></b></a> © 2025 Company, Inc. All rights reserved.</p> 
+                    <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top"> 
+                        <p>© 2025 Horizon, Inc. All rights reserved.</p> 
                             <ul class="list-unstyled d-flex"> 
                                 <li class="ms-3">
                                     <a class="link-body-emphasis" href="#" aria-label="Instagram">
